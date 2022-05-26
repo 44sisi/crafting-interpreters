@@ -1,22 +1,19 @@
-# # build an executable named myprog from myprog.c
-# all:
-# 	gcc -g -Wall -o helloworld.out helloworld.c 
-
-# clean: 
-# 	$(RM) *.out
-
 CC = gcc
 JFLAGS = -g -Wall
 
-TARGET = helloworld
+TARGETS = \
+	helloworld \
+	double-linked-list
 
-all: $(TARGET)
+all: $(TARGETS)
 
-$(TARGET): $(TARGET).c
-	$(CC) $(CFLAGS) -o $(TARGET) $(TARGET).c
+$(TARGETS): %: %.c
+	$(CC) $(CFLAGS) -o $@.out $<
+	./$@.out
 
 clean:
-	$(RM) $(TARGET)
+	$(RM) *.out
 
 run:
-	./$(TARGET)
+	./helloworld.out
+	./double-linked-list.out
