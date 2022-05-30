@@ -121,6 +121,24 @@ void deleteNode(struct Node **head, struct Node *del_node)
     free(del_node);
 }
 
+int find(struct Node **head, int value)
+{
+    struct Node *temp = *head;
+    int index = 0;
+
+    while (temp->data != value && temp->next != NULL)
+    {
+        index++;
+        temp = temp->next;
+    }
+
+    if (temp->data == value)
+    {
+        return index;
+    }
+    return -1;
+}
+
 // print the doubly linked list
 void displayList(struct Node *node)
 {
@@ -158,4 +176,9 @@ int main()
     deleteNode(&head, head->next->next->next->next->next);
 
     displayList(head);
+
+    for (int v = 1; v < 12; v++)
+    {
+        printf("%d: %d\n", v, find(&head, v));
+    }
 }
