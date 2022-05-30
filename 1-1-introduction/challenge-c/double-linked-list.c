@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <assert.h>
 
 // node creation
 struct Node
@@ -176,9 +177,8 @@ int main()
     deleteNode(&head, head->next->next->next->next->next);
 
     displayList(head);
-
-    for (int v = 1; v < 12; v++)
-    {
-        printf("%d: %d\n", v, find(&head, v));
-    }
+    
+    assert(find(&head, 1) == 3);
+    assert(find(&head, 2) == -1);
+    assert(find(&head, 5) == 4);
 }
