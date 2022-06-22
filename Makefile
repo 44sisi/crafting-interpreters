@@ -4,9 +4,9 @@ jc: # java compile
 jr: # java run f=filepath
 	cd java && java com.craftinginterpreters.lox.Lox $(f)
 
-jtast:
+jtast: # compile java tool ast
 	cd java && javac com/craftinginterpreters/tool/GenerateAst.java
 
-jtastr:
+jtastr: # run java tool ast dir=directory
 	cd java && java com.craftinginterpreters.tool.GenerateAst $(dir)
 
